@@ -1,0 +1,5 @@
+name: 'orbit_content_types'
+type: module
+description: 'Create the stand Orbit content types.'
+package: Orbit
+core_version_requirement:  ^11
