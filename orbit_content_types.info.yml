@@ -3,3 +3,11 @@ type: module
 description: 'Create the stand Orbit content types.'
 package: Orbit
 core_version_requirement:  ^11
+dependencies:
+  - metatag:metatag
+  - field_group:field_group
+  - paragraphs:paragraphs
+  - paragraphs_ee:paragraphs_ee
+  - paragraphs_features:paragraphs_features
+  - metatag_async_widget:metatag_async_widget
+  - scheduler:scheduler
