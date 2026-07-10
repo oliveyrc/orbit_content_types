@@ -11,3 +11,4 @@ dependencies:
   - paragraphs_features:paragraphs_features
   - metatag_async_widget:metatag_async_widget
   - scheduler:scheduler
+  - simple_sitemap:simple_sitemap
