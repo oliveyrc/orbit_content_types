@@ -1,0 +1,15 @@
+name: Homepage
+type: module
+description: 'Provides the Homepage content type (oct_homepage) for the Orbit platform.'
+package: Orbit Content Types
+core_version_requirement: ^11
+dependencies:
+  - orbit_content_types:orbit_content_types
+  - metatag:metatag
+  - field_group:field_group
+  - paragraphs:paragraphs
+  - paragraphs_ee:paragraphs_ee
+  - paragraphs_features:paragraphs_features
+  - metatag_async_widget:metatag_async_widget
+  - scheduler:scheduler
+  - simple_sitemap:simple_sitemap

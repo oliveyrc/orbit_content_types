@@ -1,0 +1,28 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_post_content_page_sections
+    - node.type.oct_homepage
+  module:
+    - entity_reference_revisions
+id: node.oct_homepage.field_post_content_page_sections
+field_name: field_post_content_page_sections
+entity_type: node
+bundle: oct_homepage
+label: 'Post Content Page Sections'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles: null
+    negate: 0
+    target_bundles_drag_drop:
+      from_library:
+        weight: 2
+        enabled: false
+field_type: entity_reference_revisions
