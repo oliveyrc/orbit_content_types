@@ -1,0 +1,21 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_body
+    - node.type.oct_homepage
+  module:
+    - text
+id: node.oct_homepage.field_body
+field_name: field_body
+entity_type: node
+bundle: oct_homepage
+label: Body
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats: {  }
+field_type: text_long

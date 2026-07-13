@@ -1,9 +1,10 @@
-name: Orbit Content Types
+name: Landing Page
 type: module
-description: 'Create the stand Orbit content types, provides a basic pag by default.'
-package: Orbit
-core_version_requirement:  ^11
+description: 'Provides the Landing Page content type.'
+package: Orbit Content Types
+core_version_requirement: ^11
 dependencies:
+  - orbit_content_types:orbit_content_types
   - metatag:metatag
   - field_group:field_group
   - paragraphs:paragraphs
