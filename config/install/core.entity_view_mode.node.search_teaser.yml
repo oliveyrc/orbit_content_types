@@ -1,0 +1,10 @@
+æælangcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node.search_teaser
+label: 'Search Teaser'
+description: null
+targetEntityType: node
+cache: true
