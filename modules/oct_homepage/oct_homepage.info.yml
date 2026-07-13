@@ -1,6 +1,6 @@
 name: Homepage
 type: module
-description: 'Provides the Homepage content type (oct_homepage) for the Orbit platform.'
+description: 'Provides the Homepage content type.'
 package: Orbit Content Types
 core_version_requirement: ^11
 dependencies:
