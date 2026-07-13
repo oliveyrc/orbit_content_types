@@ -12,6 +12,7 @@ use Drupal\node\Entity\Node;
 
 function orbit_content_types_install() {
   _orbit_content_types_create_dummy_page();
+	_orbit_content_types_create_404_page();
 }
 
 /**
@@ -155,4 +156,41 @@ function _orbit_content_types_create_dummy_page() {
   $url = Url::fromRoute('entity.node.canonical', ['node' => $node->id()])->toString();
   \Drupal::messenger()
     ->addMessage(t('<a href="@url">@link_text</a> has been created.', ['@url' => $url, '@link_text' => 'Dummy page']));
+}
+
+/**
+ * Create a page with some initial dummy content.
+ */
+function _orbit_content_types_create_404_page() : void{
+
+  // Create Dummy page node and save the nid for future reference.
+  $node = Node::create([
+    'type' => 'basic_page',
+    'title' => '404 Page',
+    'uid' => 1,
+    'field_body' => [
+      'value' => '
+<p>We can\'t find that page.</p>
+<p>The link you followed may be broken, or the page may have been removed. Here\'s what you can do:</p>
+<ul>
+  <li>Check the URL for typos</li>
+  <li>Head back to the <a href="/">homepage</a></li>
+  <li>Use the search bar to find what you need</li>
+</ul>
+<p>If you think this is a mistake, <a href="/contact">contact us</a> and let us know.</p>
+        ',
+      'format' => 'full_html',
+    ],
+  ]);
+  $node->save();
+
+  // Save the node ID should we need it at later stage.
+  $config = \Drupal::configFactory()->getEditable('orbit.settings');
+  $config->set('404_page_nid', $node->id());
+  $config->save(TRUE);
+
+  // Set message to show user.
+  $url = Url::fromRoute('entity.node.canonical', ['node' => $node->id()])->toString();
+  \Drupal::messenger()
+    ->addMessage(t('<a href="@url">@link_text</a> has been created.', ['@url' => $url, '@link_text' => '404 Page']));
 }
