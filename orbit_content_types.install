@@ -10,9 +10,12 @@ declare(strict_types=1);
 use Drupal\Core\Url;
 use Drupal\node\Entity\Node;
 
+/**
+ * Implements hook_install().
+ */
 function orbit_content_types_install() {
   _orbit_content_types_create_dummy_page();
-	_orbit_content_types_create_404_page();
+  _orbit_content_types_create_404_page();
 }
 
 /**
@@ -161,7 +164,7 @@ function _orbit_content_types_create_dummy_page() {
 /**
  * Create a page with some initial dummy content.
  */
-function _orbit_content_types_create_404_page() : void{
+function _orbit_content_types_create_404_page() : void {
 
   // Create Dummy page node and save the nid for future reference.
   $node = Node::create([
@@ -181,6 +184,10 @@ function _orbit_content_types_create_404_page() : void{
         ',
       'format' => 'full_html',
     ],
+    'path' => [
+      'alias' => '/404',
+      'pathauto' => 0,
+    ],
   ]);
   $node->save();
 
@@ -188,6 +195,12 @@ function _orbit_content_types_create_404_page() : void{
   $config = \Drupal::configFactory()->getEditable('orbit.settings');
   $config->set('404_page_nid', $node->id());
   $config->save(TRUE);
+
+  // Configure Drupal to use this node as the 404 page.
+  \Drupal::configFactory()
+    ->getEditable('system.site')
+    ->set('page.404', '/node/' . $node->id())
+    ->save(TRUE);
 
   // Set message to show user.
   $url = Url::fromRoute('entity.node.canonical', ['node' => $node->id()])->toString();
